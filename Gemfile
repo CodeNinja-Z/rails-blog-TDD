@@ -4,7 +4,7 @@ source 'https://rubygems.org'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.5'
 # Use sqlite3 as the database for Active Record
-gem 'sqlite3'
+
 # Use SCSS for stylesheets
 gem 'sass-rails', '5.0.3'
 # Use Uglifier as compressor for JavaScript assets
@@ -32,7 +32,8 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
-group :development do
+group :development, :test do
+  gem 'sqlite3'
   gem 'byebug', '4.0.5'
   gem 'web-console', '~> 2.1.2'
   gem 'spring'
@@ -45,3 +46,7 @@ group :test do
                                 # It automatically watches changes in your applicaion code and runs tests.
 end
 
+group :production do
+  gem 'pg'
+  gem 'rails_12factor'
+end
