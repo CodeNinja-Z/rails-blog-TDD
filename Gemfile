@@ -3,8 +3,6 @@ source 'https://rubygems.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.5'
-# Use sqlite3 as the database for Active Record
-
 # Use SCSS for stylesheets
 gem 'sass-rails', '5.0.3'
 # Use Uglifier as compressor for JavaScript assets
@@ -33,10 +31,10 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 # gem 'capistrano-rails', group: :development
 
 group :development, :test do
-  gem 'sqlite3'
+  gem 'sqlite3' 
   gem 'byebug', '4.0.5'
   gem 'web-console', '~> 2.1.2'
-  gem 'spring'
+  gem 'spring' # Spring is a Rails application preloader. It speeds up development by keeping your application running in the background so you don't need to boot it every time you run a test, rake task or migration.
 end
 
 group :test do
