@@ -21,15 +21,31 @@ class UserTest < ActiveSupport::TestCase
   end
 
   test "email must be present" do
-    
+    @user.email = ""
+    assert_not @user.valid?
   end
 
   test "email must be unique" do
-    
+    dup_user = @user.dup
+    dup_user.email = @user.email.upcase
+    @user.save  # Important! If you get a property of an object, that objec must be saved.
+    assert_not dup_user.valid?
   end
 
-  test "email must be valid" do
-    
+  test "email validation should accept valid email addresses" do
+    valid_addresses = %w(user@eee.com R_TDD-DS@eee.hello.org user@example.com first.last@eem.au carlos+roxy@love.ca)
+    valid_addresses.each do |va|
+      @user.email = va
+      assert @user.valid?, "#{va.inspect} should be valid" # Display a custom message here
+    end
+  end
+
+  test "email validation should reject invalid email addresses" do
+    invalid_addresses = %w(user@example,com user_at_eee.org user.name@example. eee@i_am_.com foo@ee+aar.com)
+    invalid_addresses.each do |ia|
+      @user.email = ia
+      assert_not @user.valid? "#{ia.inspect} should be invalid email address" # When one fails at any point, I want to know which one is failing.
+    end
   end
 
   test "password must be present" do
