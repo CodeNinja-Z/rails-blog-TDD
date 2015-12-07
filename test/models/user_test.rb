@@ -75,4 +75,8 @@ class UserTest < ActiveSupport::TestCase
     @user.password_confirmation = "111"
     assert_not @user.valid?
   end
+
+  test "a user should have many articles" do
+    assert @user.respond_to?(:articles)
+  end
 end
