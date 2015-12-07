@@ -19,3 +19,4 @@ content: text
 - title must be between 2 charactors and 80 charactors
 - content must be present
 - content must be between 1 to 3600 charactors
+- should belong to user, validate user id
